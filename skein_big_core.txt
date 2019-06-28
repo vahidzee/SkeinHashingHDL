@@ -1,0 +1,2 @@
+skein_big_core:
+In this function, if the data length can fit in the buffer, it will be written there, and if not, it'll change the data given in the input.

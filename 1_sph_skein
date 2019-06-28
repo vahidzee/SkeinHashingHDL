@@ -13,6 +13,10 @@ skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = I
 
 
 sph_skein512(void *cc, const void *data, size_t len) : 
+	in this function we call skein_big_core(cc, data, len) that we describe in skein_big_core.txt .
+
+
+\\ TODO : describe how this function work base on what we know on skein_big_core
 
 
 
