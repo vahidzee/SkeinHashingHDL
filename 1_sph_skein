@@ -1,0 +1,34 @@
+file sph_skein.h :
+we define a struct named "sph_skein_big_context" , this struct have 64 bit of unsigned character that are for alignment then a unsigned long variable for size_t named ptr then 8 , 64 bit numbers named h0 to h7 and for the end there is a 64 bit number named bcount and this struct is type of our skein's hashes, like skein-224 , skein-256 , skein-384 , skein-512 ( the standard one ) .
+We have same functions for all these skein hashings ( 224, 256, 384, 512 ) .
+
+First we start with 512 bit skein hashing because it's the standard one.
+
+sph_skein512_init(void *cc) : in this function we call :
+
+
+skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. in this function we valued cc that is an implement of our struct. ( we initialize cc with IV512 values ) ( IV512 is 512 bit of hexadecimal number that you can see in file skein.c line 1060 // TODO : figure out what this numbers are )
+
+
+
+
+sph_skein512(void *cc, const void *data, size_t len) : 
+
+
+
+
+sph_skein512_close(void *cc, void *dst);
+	in this function we call sph_skein512_addbits_and_close( cc, 0, 0, dst ) that this function is equivalent to call : skein_big_close((sph_skein_big_context *)cc, 0, 0, dst, 64); and         sph_skein512_init(cc) : 
+	
+		
+	
+
+
+
+
+
+
+void sph_skein512_addbits_and_close(
+	void *cc, unsigned ub, unsigned n, void *dst);
+
+
