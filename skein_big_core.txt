@@ -1,2 +1,14 @@
 skein_big_core:
+
 In this function, if the data length can fit in the buffer, it will be written there, and if not, it'll change the data given in the input.
+
+If data length is same as block size ( 512 bit ) then data will be written in blocks of hashing.
+
+Problem occured when data length is a "multiple" of the block size ( 512 bit ) , in this situation final bit must set just for the final block and not the other blocks.
+
+This function begin with make an instance of our struct then this function start to
+fill our struct with data and in each 512 bit it check that if it's the last block ( last 512 bits )
+or not , if it's the last block, final bit will written at the end of last block.
+
+In this function loop, if there are more data to write we allocate some space in memory and write the struct
+there and then overwrite the struct until the last block that will be saved in memory with the final bit.
