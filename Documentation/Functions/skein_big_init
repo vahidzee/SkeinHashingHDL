@@ -1,0 +1,14 @@
+skein_big_init((sph_skein_big_context *)cc, IV512) :
+
+General :
+    This function make an instance of struct sph_skein_big_context and value this struct with saved data for skein hashing "IV512".
+
+
+Details :
+
+    In this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. in this function we value cc that
+    is an implement of our struct. ( we initialize cc with IV512 values )
+    ( IV512 is 512 bit of hexadecimal number that you can see in file skein.c line 1060 )
+
+
+ // TODO : figure out what this numbers are "VAHIDZEE"
