@@ -13,7 +13,7 @@ To check what each of the functions named below does, check the Functions folder
 sph_skein512_init(void *cc) : in this function we call :
 
 
-skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. In this function we set the value of cc that is an implementation of our struct.(we initialize cc with IV512 values)(IV512 is 512 bits of a hexadecimal number that you can see in file skein.c line 1060 // TODO : figure out what these numbers are) //
+skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. In this function we set the value of cc that is an implementation of our struct.(we initialize cc with IV512 values)(IV512 is a 512-bit hexadecimal number that you can see in file skein.c line 1060 // TODO : figure out what these numbers are) //
 
 
 
