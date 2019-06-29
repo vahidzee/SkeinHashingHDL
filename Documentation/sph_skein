@@ -3,32 +3,32 @@
 file sph_skein.h :
 
 \\ TODO : make a file for all structs and defines
-we define a struct named "sph_skein_big_context" , this struct have 64 bit of unsigned character that are for alignment then a unsigned long variable for size_t named ptr then 8 , 64 bit numbers named h0 to h7 and for the end there is a 64 bit number named bcount and this struct is type of our skein's hashes, like skein-224 , skein-256 , skein-384 , skein-512 ( the standard one ) .
-We have same functions for all these skein hashings ( 224, 256, 384, 512 ) .
+We define a struct named "sph_skein_big_context" , this struct has 64 bits of unsigned characters that are for alignment, then an unsigned long variable of size_t named ptr, then 8 64-bit numbers named h0 to h7 and then a 64-bit number named bcount, and this struct is the type of our skein's hashes, like skein-224 , skein-256 , skein-384 or skein-512 (the standard one).
+We have the same functions for all these skein hashings(224, 256, 384, 512).
 
-First we start with 512 bit skein hashing because it's the standard one.
-All functions named below for check what each function do check folder Functions.
+First we start with the 512-bit skein hashing because it's the standard one.
+To check what each of the functions named below does, check the Functions folder.
 
 
 sph_skein512_init(void *cc) : in this function we call :
 
 
-skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. in this function we valued cc that is an implement of our struct. ( we initialize cc with IV512 values ) ( IV512 is 512 bit of hexadecimal number that you can see in file skein.c line 1060 // TODO : figure out what this numbers are ) //
+skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. In this function we set the value of cc that is an implementation of our struct.(we initialize cc with IV512 values)(IV512 is 512 bits of a hexadecimal number that you can see in file skein.c line 1060 // TODO : figure out what these numbers are) //
 
 
 
 
 sph_skein512(void *cc, const void *data, size_t len) : 
-	in this function we call skein_big_core(cc, data, len) that we describe in skein_big_core.txt .
+	In this function we call skein_big_core(cc, data, len) that we describe in skein_big_core.txt.
 
 
-// TODO : describe how this function work base on what we know on skein_big_core //
+// TODO : describe how this function works base on what we know on skein_big_core //
 
 
 
 
 sph_skein512_close(void *cc, void *dst);
-	in this function we call sph_skein512_addbits_and_close( cc, 0, 0, dst ) that this function is equivalent to call : skein_big_close((sph_skein_big_context *)cc, 0, 0, dst, 64); and         sph_skein512_init(cc) : 
+	In this function we call sph_skein512_addbits_and_close(cc, 0, 0, dst) and this function is equivalent to calling: skein_big_close((sph_skein_big_context *)cc, 0, 0, dst, 64); and         sph_skein512_init(cc) : 
 	
 
 
@@ -43,4 +43,4 @@ void sph_skein512_addbits_and_close(
 
 // TODO : document this function
 
-// TODO : this functions till here are all for 512 bit hashing we should describe all this functions for all other ones
+// TODO : the functions till here are all for 512 bit hashing we should describe all these functions for all the other ones
