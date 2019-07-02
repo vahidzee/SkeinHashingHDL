@@ -1,0 +1,100 @@
+
+file sph_skein.h :
+
+\\ TODO : make a file for all structs and defines
+We define a struct named "sph_skein_big_context" , this struct has 64 bits of unsigned characters that are for alignment,
+then an unsigned long variable of size_t named ptr, then 8 64-bit numbers named h0 to h7 and then a 64-bit number named bcount,
+and this struct is the type of our skein's hashes, like skein-224 , skein-256 , skein-384 or skein-512 (the standard one).
+We have the same functions for all these skein hashings(224, 256, 384, 512).
+
+First we start with the 512-bit skein hashing because it's the standard one.
+To check what each of the functions named below does, check the Functions folder.
+
+
+sph_skein512_init(void *cc) : in this function we call :
+
+
+skein_big_init((sph_skein_big_context *)cc, IV512) : in this function cc->hi = IV512[i] for i from 0 to 7 and then cc->bcount = 0 and cc->ptr = 0. In this function we set the value of cc that is an implementation of our struct.(we initialize cc with IV512 values)(IV512 is a 512-bit hexadecimal number that you can see in file skein.c line 1060 // TODO : figure out what these numbers are) //
+
+
+
+
+sph_skein512(void *cc, const void *data, size_t len) : 
+	In this function we call skein_big_core(cc, data, len) that we describe in skein_big_core.txt.
+
+
+// TODO : describe how this function works base on what we know on skein_big_core //
+
+
+
+
+sph_skein512_close(void *cc, void *dst);
+	In this function we call sph_skein512_addbits_and_close(cc, 0, 0, dst) and this function is equivalent to calling: skein_big_close((sph_skein_big_context *)cc, 0, 0, dst, 64); and         sph_skein512_init(cc) : 
+	
+
+
+
+// TODO : document this function
+
+
+
+
+void sph_skein512_addbits_and_close(
+	void *cc, unsigned ub, unsigned n, void *dst);
+
+// TODO : document this function
+
+// TODO : the functions till here are all for 512 bit hashing we should describe all these functions for all the other ones
+
+
+sph_skein512_close(void *cc , void *dst)
+// this function calls sph_skein512_addbits_and_close( )
+In which   sph_skein512_addbits_and_close( ).  function calls  :  skein_big_close() and sph_skein512_init()
+
+
+skein_big_close() :
+// this function has the sph_skein_big_context
+And two unsigned numbers ub , n
+, *dst as the output buffer ,
+And out_len as arguments .
+If the sph_small_footprint value still remains 1 a size_t u will be defined .
+When the function is called by the caller  n equals to zero but if n !=0 it  would need bit padding
+Therefore there will be shiftings to create the paddings.
+And the skein_big_core() will be called .
+At that point, if ptr == 0, then the message was empty
+otherwise, there is between 1 and 64 bytes (inclusive) which
+  * are yet to be processed. Either way, we complete the buffer
+  * to a full block with zeros (the Skein specification mandates
+  * that an empty message is padded so that there is at least
+  * one block to process).
+
+The memset function sets all elements of the block given to it with zeros
+after calling the READ_STATE_BIG() ,
+ for the output (that block contains
+ the encoding of "0", over 8 bytes, then padded with zeros).
+
+
+
+sph_skein256_init()
+// this function calls skein_big_init()
+This function has IV256 as a argument
+In which the encrypted values were assigned to this array
+In line 1046 of the source code
+
+
+skein_big_init()
+// in this function the struct *sc are given values.
+And also the pointer and the b_count are given the value zero.
+Each of the points of the struct sc are  assigned to the iv array elements
+The iv256 values were assigned in line 1046.
+
+Skein_big_core()
+//
+
+
+read_state_big(sc)
+// this function gets the sc block as an argument and
+Assigns  the  struct points to [h0 - h7}
+
+
+UBI_BIG()
