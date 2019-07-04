@@ -458,7 +458,6 @@ module skein_round_3 (
 	
 	assign p0x = p0 + p5;	// todo: p0 + p1;
 	assign p1x = (even) ? { p1[46:0], p1[63:47] } : { p1[38:0], p1[63:39] };
-			// todo:  (even) ? { p1[37:0], p1[63:38] } : { p1[30:0], p1[63:31] }; -> rotate 26 for even and 33 for odd
 	assign p2x = p2 + p7;	// todo: p2 + p3;
 	assign p3x = (even) ? { p3[14:0], p3[63:15] } : { p3[34:0], p3[63:35] };
 	assign p4x = p4 + p1;	// todo: p4 + p5;
@@ -505,11 +504,9 @@ module skein_round_4 (
 	assign p2x = p2 + p5;	// todo: p2 + p3;
 	assign p3x = (even) ? { p3[ 7:0], p3[63: 8] } : { p3[41:0], p3[63:42] }; // todo:  (even) ? { p3[54:0], p3[63:55] } : { p3[28:0], p1[63:29] }; -> rotate 9 for even and 35 for odd
 	assign p4x = p4 + p3;	// todo: p4 + p5;
-	assign p5x = (even) ? { p5[ 9:0], p5[63:10] } : { p5[ 7:0], p5[63: 8] }; 
-			// todo:  (even) ? { p5[9:0], p5[63:10] } : { p5[7:0], p5[63:8] }; -> rotate 54 for even and 56 for odd
+	assign p5x = (even) ? { p5[ 9:0], p5[63:10] } : { p5[ 7:0], p5[63: 8] }; // todo:  (even) ? { p5[9:0], p5[63:10] } : { p5[7:0], p5[63:8] }; -> rotate 54 for even and 56 for odd
 	assign p6x = p6 + p1;	// todo: p6 + p7;
-	assign p7x = (even) ? { p7[54:0], p7[63:55] } : { p7[28:0], p7[63:29] }; 
-			// todo:  (even) ? { p7[7:0], p7[63:8] } : { p7[41:0], p7[63:42] }; -> rotate 56 for even and 22 for odd
+	assign p7x = (even) ? { p7[54:0], p7[63:55] } : { p7[28:0], p7[63:29] }; // todo:  (even) ? { p7[7:0], p7[63:8] } : { p7[41:0], p7[63:42] }; -> rotate 56 for even and 22 for odd
 
 	always @ (posedge clk) begin
 	
