@@ -1,0 +1,87 @@
+\documentclass[12 pt]{report}
+
+\pagenumbering{arabic}
+
+%\usepackage{caption}
+\usepackage[nottoc]{tocbibind}
+\usepackage{hyperref}
+\usepackage[a4paper,top=2cm,left=1.2cm,right=1.5cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\newcommand{\tarc}{\mbox{\large$\frown$}}
+\newcommand{\arc}[1]{\stackrel{\tarc}{#1}}
+\usepackage{inputenc}
+\usepackage{hyperref}
+%\pagestyle{empty}
+
+\graphicspath{./}
+
+\usepackage{setspace}
+
+\linespread{1.3}
+\usepackage{multirow}
+\usepackage{amsfonts}
+\usepackage[export]{adjustbox}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\usepackage{enumerate}
+
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+
+\usepackage{xepersian}
+
+%\settextfont[]{B Yas}
+\settextfont[]{B Nazanin}
+\setdigitfont{Yas}
+\pagestyle{empty}
+
+\begin{document}
+	\begin{center}
+		{\LARGE دانشگاه صنعتی شریف  }
+		\\[1.5cm]
+		\linespread{1.2}\huge {\bfseries \lr{Skein Hashing} }
+		\\[1.5cm]
+		\linespread{1}
+		\includegraphics[width=5cm]{images/tuoslogo.png}\\[1cm]
+		{\Large گروه 4 }
+		\\[0.5cm]
+		{\small سید پارسا اسکندر
+			\\[0.2cm] کیمیا یزدانی
+			\\[0.2cm] الهه خدایی 
+			\\[0.2cm] وحید زهتاب 
+			\\[0.2cm] آروین آذرمینا
+			\\}
+		{\large \emph{ناظر:}
+			فرشاد بهاروند}
+		\\[1cm]
+		\large پروژه مستندسازی کدهای موجود در زبان های \lr{C , Verilog}
+		\\[0.3cm] 
+		
+		{\large بهار ۹۸ }
+	\end{center}
+	
+\end{titlepage}
+
+\pagebreak
+
+\chapter*{\large چکیده }
+\pagestyle{empty}
+
+در این مقاله که در مورد یکی از روش‌های \lr{hash}  به نام \lr{Skein} توضیح داده خواهد شد. و هم‌چنین توضیح و مستند برنامه‌های داده شده به دو زبان \lr{C } به عنوان مدل طلایی و \lr{verilog} به عنوان طرح سخت‌افزاری , آورده خواهد شد .
+در انتها نیز تفاوت‌های این دو مدل و دلایل اختلاف آن‌ها (‌ نقاط اشتباه آن‌ها در پیاده‌سازی) تحلیل خواهد شد.
+
+\tableofcontents
+
+\input{files/introduction}
+\input{files/GoldenModel}
+\input{files/Functions}
+
+	
+\end{document}
