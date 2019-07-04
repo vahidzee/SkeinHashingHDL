@@ -286,12 +286,12 @@ endmodule
 module skein_round (
 	input clk,
 	input [31:0] round,
-	input [511:0] p,
+	input [511:0] p, 
 	input [575:0] h,
 //	input [511:0] h,
-	input [63:0] t0,
-	input [63:0] t1,
-	output [511:0] po,
+	input [63:0] t0,  // tweak 
+	input [63:0] t1,  // tweak
+	output [511:0] po, // output afteer 
 //	output [511:0] ho
 	output [575:0] ho
 );
@@ -314,7 +314,7 @@ module skein_round (
 
 	always @ (posedge clk) begin
 	
-		// Add Key
+		// Add Key 
 		p0 <= p[511:448] + h[575:512];
 		p1 <= p[447:384] + h[511:448];
 		p2 <= p[383:320] + h[447:384];
@@ -499,18 +499,19 @@ module skein_round_4 (
 	assign p6 = in[127: 64];
 	assign p7 = in[ 63:  0];
 	
-	assign p0x = p0 + p7;
-	assign p1x = (even) ? { p1[19:0], p1[63:20] } : { p1[55:0], p1[63:56] };
-	assign p2x = p2 + p5;
-	assign p3x = (even) ? { p3[ 7:0], p3[63: 8] } : { p3[41:0], p3[63:42] };
-	assign p4x = p4 + p3;
-	assign p5x = (even) ? { p5[ 9:0], p5[63:10] } : { p5[ 7:0], p5[63: 8] };
-	assign p6x = p6 + p1;
-	assign p7x = (even) ? { p7[54:0], p7[63:55] } : { p7[28:0], p7[63:29] };
+	assign p0x = p0 + p7; 	// todo: p0 + p1
+	assign p1x = (even) ? { p1[19:0], p1[63:20] } : { p1[55:0], p1[63:56] }; // todo :  (even) ? { p1[37:0], p1[63:38] } : { p1[30:0], p1[63:31] }; -> rotate 26 for even and 33 for odd
+	assign p2x = p2 + p5;	// todo: p2 + p3
+	assign p3x = (even) ? { p3[ 7:0], p3[63: 8] } : { p3[41:0], p3[63:42] }; // todo :  (even) ? { p3[51:0], p3[63:52] } : { p3[12:0], p1[63:13] }; -> rotate 12 for even and 51 for odd
+	assign p4x = p4 + p3;	// todo: p4 + p5
+	assign p5x = (even) ? { p5[ 9:0], p5[63:10] } : { p5[ 7:0], p5[63: 8] }; // todo :  (even) ? { p5[5:0], p5[63:6] } : { p5[24:0], p5[63:25] }; -> rotate 58 for even and 39 for odd
+	assign p6x = p6 + p1;	// todo: p6 + p7
+	assign p7x = (even) ? { p7[54:0], p7[63:55] } : { p7[28:0], p7[63:29] }; // ok -> rotate 26 for even and 33 for odd
+
 
 	always @ (posedge clk) begin
 	
-		out[511:448] <= p0x;
+		out[511:448] <= p0x; 
 		out[447:384] <= p1x ^ p6x;
 		out[383:320] <= p2x;
 		out[319:256] <= p3x ^ p4x;
