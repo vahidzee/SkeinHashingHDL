@@ -463,7 +463,7 @@ module skein_round_3 (
 	assign p4x = p4 + p1;	// todo: p4 + p5;
 	assign p5x = (even) ? { p5[27:0], p5[63:28] } : { p5[24:0], p5[63:25] };
 	assign p6x = p6 + p3;	// todo: p6 + p7;
-	assign p7x = (even) ? { p7[24:0], p7[63:25] } : { p7[20:0], p7[63:21] };
+	assign p7x = (even) ? { p7[24:0], p7[63:25] } : { p7[20:0], p7[63:21] };	// todo:  (even) ? { p7[24:0], p7[63:25] } : { p7[41:0], p7[63:42] }; -> rotate 39 for even and 22 for odd	
 
 	always @ (posedge clk) begin
 	
