@@ -443,7 +443,6 @@ module skein_round_3(
     input [511:0] in,
     output reg [511:0] out
 );
-<<<<<<< HEAD
 	
 	wire [63:0] p0, p1, p2, p3, p4, p5, p6, p7;
 	wire [63:0] p0x,p1x,p2x,p3x,p4x,p5x,p6x,p7x;
@@ -464,7 +463,7 @@ module skein_round_3(
 	assign p4x = p4 + p1;	// todo: p4 + p5;
 	assign p5x = (even) ? { p5[27:0], p5[63:28] } : { p5[24:0], p5[63:25] };
 	assign p6x = p6 + p3;	// todo: p6 + p7;
-	assign p7x = (even) ? { p7[24:0], p7[63:25] } : { p7[20:0], p7[63:21] };	// todo:  (even) ? { p7[24:0], p7[63:25] } : { p7[41:0], p7[63:42] }; -> rotate 39 for even and 22 for odd	
+	assign p7x = (even) ? { p7[24:0], p7[63:25] } : { p7[20:0], p7[63:21] };
 
 	always @ (posedge clk) begin
 	
@@ -478,42 +477,6 @@ module skein_round_3(
 		out[ 63:  0] <= p7x ^ p2x;	// todo: p2x ^ p3x;
 		
 	end
-=======
-
-    wire [63:0] p0, p1, p2, p3, p4, p5, p6, p7;
-    wire [63:0] p0x, p1x, p2x, p3x, p4x, p5x, p6x, p7x;
-
-    assign p0 = in[511:448];
-    assign p1 = in[447:384];
-    assign p2 = in[383:320];
-    assign p3 = in[319:256];
-    assign p4 = in[255:192];
-    assign p5 = in[191:128];
-    assign p6 = in[127:64];
-    assign p7 = in[63:0];
-
-    assign p0x = p0+p5;    // todo: p0 + p1;
-    assign p1x = (even) ? {p1[46:0], p1[63:47]}:{p1[38:0], p1[63:39]};
-    assign p2x = p2+p7;    // todo: p2 + p3;
-    assign p3x = (even) ? {p3[14:0], p3[63:15]}:{p3[34:0], p3[63:35]};
-    assign p4x = p4+p1;    // todo: p4 + p5;
-    assign p5x = (even) ? {p5[27:0], p5[63:28]}:{p5[24:0], p5[63:25]};
-    assign p6x = p6+p3;    // todo: p6 + p7;
-    assign p7x = (even) ? {p7[24:0], p7[63:25]}:{p7[20:0], p7[63:21]};
-
-    always @(posedge clk) begin
-
-        out[511:448] <= p0x;        // todo: p2x;
-        out[447:384] <= p1x ^ p4x;    // todo: p0x ^ p1x;
-        out[383:320] <= p2x;        // todo: p4x;
-        out[319:256] <= p3x ^ p6x;    // todo: p6x ^ p7x;
-        out[255:192] <= p4x;        // todo: p6x;
-        out[191:128] <= p5x ^ p0x;    // todo: p4x ^ p5x;
-        out[127:64] <= p6x;        // todo: p0x;
-        out[63:0] <= p7x ^ p2x;    // todo: p2x ^ p3x;
-
-    end
->>>>>>> dbea5a6f4d4d87e2c7a8bce4fd0e6c972a74ccac
 
 endmodule
 
