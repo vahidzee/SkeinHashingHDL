@@ -371,13 +371,13 @@ module skein_round_1(
     assign p7 = in[63:0];
 
     assign p0x = p0+p1;
-    assign p1x = (even) ? {p1[17:0], p1[63:18]}:{p1[24:0], p1[63:25]};    //(46,39)
+    assign p1x = (even) ? {p1[17:0], p1[63:18]}:{p1[24:0], p1[63:25]};   
     assign p2x = p2+p3;
-    assign p3x = (even) ? {p3[27:0], p3[63:28]}:{p3[33:0], p3[63:34]};    //(36,30)
+    assign p3x = (even) ? {p3[27:0], p3[63:28]}:{p3[33:0], p3[63:34]};    
     assign p4x = p4+p5;
-    assign p5x = (even) ? {p5[44:0], p5[63:45]}:{p5[29:0], p5[63:30]};    //(19,34)
+    assign p5x = (even) ? {p5[44:0], p5[63:45]}:{p5[29:0], p5[63:30]};    
     assign p6x = p6+p7;
-    assign p7x = (even) ? {p7[26:0], p7[63:27]}:{p7[39:0], p7[63:40]};    //(37,24)
+    assign p7x = (even) ? {p7[26:0], p7[63:27]}:{p7[39:0], p7[63:40]}; 
 
     always @(posedge clk) begin
         out[511:448] <= p2x;

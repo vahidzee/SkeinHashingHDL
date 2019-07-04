@@ -381,14 +381,14 @@ module skein_round_1(
 
     always @(posedge clk) begin
 
-        out[511:448] <= p0x;
-        out[447:384] <= p1x ^ p0x;
-        out[383:320] <= p2x;
-        out[319:256] <= p3x ^ p2x;
-        out[255:192] <= p4x;
-        out[191:128] <= p5x ^ p4x;
-        out[127:64] <= p6x;
-        out[63:0] <= p7x ^ p6x;
+        out[511:448] <= p0x;		// todo: p2x;
+        out[447:384] <= p1x ^ p0x;	// todo: p0x ^ p1x;
+        out[383:320] <= p2x;		// todo: p4x;
+        out[319:256] <= p3x ^ p2x;	// todo: p6x ^ p7x;
+        out[255:192] <= p4x;		// todo: p6x;
+        out[191:128] <= p5x ^ p4x;	// todo: p4x ^ p5x;
+        out[127:64] <= p6x;			// todo: p0x;
+        out[63:0] <= p7x ^ p6x;		// todo: p2x ^ p3x;
 
     end
 
