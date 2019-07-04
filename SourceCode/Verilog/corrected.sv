@@ -55,7 +55,8 @@ module skein512(
     assign nonce_le = {nonce[7:0], nonce[15:8], nonce[23:16], nonce[31:24]};
     assign nonce2_le = {nonce2[7:0], nonce2[15:8], nonce2[23:16], nonce2[31:24]};
 
-    assign hash = {h_q[455:448],
+    assign hash = {
+		h_q[455:448],
         h_q[463:456],
         h_q[471:464],
         h_q[479:472],
@@ -121,6 +122,7 @@ module skein512(
         h_q[63:56]
         };
 
+	//
     skein_round sr00(clk, 0, p00_q, h00_q, t0_q, t1_q, o00, ho00);
     skein_round sr01(clk, 1, p01, h01, t1_q, t2_q, o01, ho01);
     skein_round sr02(clk, 2, p02, h02, t2_q, t0_q, o02, ho02);
@@ -147,11 +149,12 @@ module skein512(
         if (phase_q) begin
             p00_d <= {data[63:0], nonce_le, data[95:64], 384'd0};
 
+			// Key Generation
             h00_d[575:64] <= midstate;
             h00_d[63:0] <= 64'd0;
-//			h00_d[63:0] <= ((midstate[448 +: 64] ^ midstate[384 +: 64]) ^ (midstate[320 +: 64] ^ midstate[256 +: 64])) ^ ((midstate[192 +: 64] ^ midstate[128 +: 64]) ^ (midstate[ 64 +: 64] ^ midstate[  0 +: 64])) ^ 64'h1BD11BDAA9FC1A22;
-//			h00_d <= midstate;
 
+
+			// Tweak
             t0_d <= 64'h0000000000000050;
             t1_d <= 64'hb000000000000000;
             t2_d <= 64'hb000000000000050;
@@ -187,23 +190,17 @@ module skein512(
             t1_d <= 64'hFF00000000000000;
             t2_d <= 64'hFF00000000000008;
 
+
+			// Setting output adding round 18 subkeys
+			// calculate subkeys from ho output subkeys from round 17
             h_d[511:448] <= (o0H[511:448]+ho0H[575:512]);
             h_d[447:384] <= (o0H[447:384]+ho0H[511:448]);
             h_d[383:320] <= (o0H[383:320]+ho0H[447:384]);
             h_d[319:256] <= (o0H[319:256]+ho0H[383:320]);
             h_d[255:192] <= (o0H[255:192]+ho0H[319:256]);
-            h_d[191:128] <= (o0H[191:128]+ho0H[255:192]+64'h0000000000000008);
-            h_d[127:64] <= (o0H[127:64]+ho0H[191:128]+64'hFF00000000000000);
+            h_d[191:128] <= (o0H[191:128]+ho0H[255:192]+64'h0000000000000008);	// doubt: tweak value?
+            h_d[127:64] <= (o0H[127:64]+ho0H[191:128]+64'hFF00000000000000);	// doubt: tweak value?
             h_d[63:0] <= (o0H[63:0]+ho0H[127:64]+18);
-//			h_d[511:448] <= ( o0H[511:448] + ho0H[511:448] );
-//			h_d[447:384] <= ( o0H[447:384] + ho0H[447:384] );
-//			h_d[383:320] <= ( o0H[383:320] + ho0H[383:320] );
-//			h_d[319:256] <= ( o0H[319:256] + ho0H[319:256] );
-//			h_d[255:192] <= ( o0H[255:192] + ho0H[255:192] );
-//			h_d[191:128] <= ( o0H[191:128] + ho0H[191:128] + 64'h0000000000000008 );
-//			h_d[127: 64] <= ( o0H[127: 64] + ho0H[127: 64] + 64'hFF00000000000000 );
-//			h_d[ 63:  0] <= ( o0H[ 63:  0] + ho0H[ 63:  0] + 18 );
-
         end
 
     end
@@ -217,46 +214,65 @@ module skein512(
 
         phase_q <= phase_d;
 
+		// setting tweak values
         t0_q <= t0_d;
         t1_q <= t1_d;
         t2_q <= t2_d;
 
         h_q <= h_d;
 
-        p0H <= o0G;
+		// giving a round output to its next round as an input
+        p0H <= o0G;		
         h0H <= ho0G;
-        p0G <= o0F;
+
+        p0G <= o0F;	
         h0G <= ho0F;
+
         p0F <= o0E;
         h0F <= ho0E;
+
         p0E <= o0D;
         h0E <= ho0D;
+
         p0D <= o0C;
         h0D <= ho0C;
+
         p0C <= o0B;
         h0C <= ho0B;
+
         p0B <= o0A;
         h0B <= ho0A;
+
         p0A <= o09;
         h0A <= ho09;
+
         p09 <= o08;
         h09 <= ho08;
+
         p08 <= o07;
         h08 <= ho07;
+
         p07 <= o06;
         h07 <= ho06;
+
         p06 <= o05;
         h06 <= ho05;
+
         p05 <= o04;
         h05 <= ho04;
+
         p04 <= o03;
         h04 <= ho03;
+
         p03 <= o02;
         h03 <= ho02;
+
         p02 <= o01;
         h02 <= ho01;
+
         p01 <= o00;
         h01 <= ho00;
+
         p00_q <= p00_d;
         h00_q <= h00_d;
 

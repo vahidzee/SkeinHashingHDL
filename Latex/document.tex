@@ -37,51 +37,19 @@
 
 \usepackage{xepersian}
 
-%\settextfont[]{B Yas}
-\settextfont[]{B Nazanin}
+\settextfont[]{B Yas}
+%\settextfont[]{B Nazanin}
 \setdigitfont{Yas}
 \pagestyle{empty}
 
 \begin{document}
-	\begin{center}
-		{\LARGE دانشگاه صنعتی شریف  }
-		\\[1.5cm]
-		\linespread{1.2}\huge {\bfseries \lr{Skein Hashing} }
-		\\[1.5cm]
-		\linespread{1}
-		\includegraphics[width=5cm]{images/tuoslogo.png}\\[1cm]
-		{\Large گروه 4 }
-		\\[0.5cm]
-		{\small سید پارسا اسکندر
-			\\[0.2cm] کیمیا یزدانی
-			\\[0.2cm] الهه خدایی 
-			\\[0.2cm] وحید زهتاب 
-			\\[0.2cm] آروین آذرمینا
-			\\}
-		{\large \emph{ناظر:}
-			فرشاد بهاروند}
-		\\[1cm]
-		\large پروژه مستندسازی کدهای موجود در زبان های \lr{C , Verilog}
-		\\[0.3cm] 
-		
-		{\large بهار ۹۸ }
-	\end{center}
+	\include{files/TitlePage}
+	\pagebreak
+	\input{files/Summary}
 	
-\end{titlepage}
-
-\pagebreak
-
-\chapter*{\large چکیده }
-\pagestyle{empty}
-
-در این مقاله که در مورد یکی از روش‌های \lr{hash}  به نام \lr{Skein} توضیح داده خواهد شد. و هم‌چنین توضیح و مستند برنامه‌های داده شده به دو زبان \lr{C } به عنوان مدل طلایی و \lr{verilog} به عنوان طرح سخت‌افزاری , آورده خواهد شد .
-در انتها نیز تفاوت‌های این دو مدل و دلایل اختلاف آن‌ها (‌ نقاط اشتباه آن‌ها در پیاده‌سازی) تحلیل خواهد شد.
-
-\tableofcontents
-
-\input{files/introduction}
-\input{files/GoldenModel}
-\input{files/Functions}
-
+	\tableofcontents
 	
+	\input{files/introduction}
+	\input{files/GoldenModel}
+	\input{files/Functions}
 \end{document}
