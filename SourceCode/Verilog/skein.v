@@ -456,7 +456,7 @@ module skein_round_3 (
 	assign p6 = in[127: 64];
 	assign p7 = in[ 63:  0];
 	
-	assign p0x = p0 + p5;
+	assign p0x = p0 + p5;	// todo: p0 + p1
 	assign p1x = (even) ? { p1[46:0], p1[63:47] } : { p1[38:0], p1[63:39] };
 	assign p2x = p2 + p7;
 	assign p3x = (even) ? { p3[14:0], p3[63:15] } : { p3[34:0], p3[63:35] };
