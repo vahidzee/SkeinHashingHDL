@@ -466,14 +466,14 @@ module skein_round_3 (
 	assign p7x = (even) ? { p7[24:0], p7[63:25] } : { p7[20:0], p7[63:21] };
 
 	always @ (posedge clk) begin
-		out[511:448] <= p0x;
-		out[447:384] <= p1x ^ p4x;
-		out[383:320] <= p2x;
-		out[319:256] <= p3x ^ p6x;
-		out[255:192] <= p4x;
-		out[191:128] <= p5x ^ p0x;
-		out[127: 64] <= p6x;
-		out[ 63:  0] <= p7x ^ p2x;
+		out[511:448] <= p2x; 
+		out[447:384] <= p0x ^ p1x;
+		out[383:320] <= p4x;
+		out[319:256] <= p6x ^ p7x;
+		out[255:192] <= p6x;
+		out[191:128] <= p4x ^ p5x;
+		out[127: 64] <= p0x;
+		out[ 63:  0] <= p2x ^ p3x;
 	end
 
 endmodule
@@ -497,13 +497,13 @@ module skein_round_4 (
 	assign p7 = in[ 63:  0];
 
 	assign p0x = p0 + p1;
-    assign p1x = (even) ? { p1[37:0], p1[63:38] } : { p1[30:0], p1[63:31] };
+    assign p1x = (even) ? { p1[19:0], p1[63:20] } : { p1[55:0], p1[63:56] };
     assign p2x = p2 + p3;
-    assign p3x = (even) ? { p3[51:0], p3[63:52] } : { p3[12:0], p3[63:13] };
+    assign p3x = (even) ? { p3[54:0], p3[63:55] } : { p3[28:0], p1[63:29] };
     assign p4x = p4 + p5;
-	assign p5x = (even) ? { p5[ 5:0], p5[63: 6] } : { p5[24:0], p5[63: 25] };
+	assign p5x = (even) ? { p5[9:0], p5[63:10] } : { p5[7:0], p5[63:8] };
     assign p6x = p6 + p7;
-	assign p7x = (even) ? { p7[54:0], p7[63:55] } : { p7[28:0], p7[63:29] };
+	assign p7x = (even) ? { p7[7:0], p7[63:8] } : { p7[41:0], p7[63:42] };
 
 	always @ (posedge clk) begin
 		out[511:448] <= p2x; 
