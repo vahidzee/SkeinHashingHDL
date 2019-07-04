@@ -286,23 +286,23 @@ endmodule
 module skein_round(
     input clk,
     input [31:0] round,
-    input [511:0] p,
-    input [575:0] h,
+    input [511:0] p, 	
+    input [575:0] h,	
 //	input [511:0] h,
-    input [63:0] t0,  // tweak
-    input [63:0] t1,  // tweak
-    output [511:0] po, // output afteer
+    input [63:0] t0,  
+    input [63:0] t1,  
+    output [511:0] po, 
 //	output [511:0] ho
-    output [575:0] ho
+    output [575:0] ho	
 );
 
     reg [63:0] p0, p1, p2, p3, p4, p5, p6, p7;
-    reg [575:0] hx0, hx1, hx2, hx3, hx4;
+    reg [575:0] hx0, hx1, hx2, hx3, hx4;	
 //	reg [511:0] hx0, hx1, hx2, hx3, hx4;
 
     assign ho = hx4;
 
-    wire [511:0] po0, po1, po2, po3, po4;
+    wire [511:0] po0, po1, po2, po3, po4; 
 
     assign po = po4;
     assign po0 = {p0, p1, p2, p3, p4, p5, p6, p7};
@@ -319,7 +319,7 @@ module skein_round(
         p1 <= p[447:384]+h[511:448];
         p2 <= p[383:320]+h[447:384];
         p3 <= p[319:256]+h[383:320];
-        p4 <= p[255:192]+h[319:256];
+        p4 <= p[255:192]+h[319:256]; 
         p5 <= p[191:128]+h[255:192]+t0;
         p6 <= p[127:64]+h[191:128]+t1;
         p7 <= p[63:0]+h[127:64]+round;
