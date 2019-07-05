@@ -1,0 +1,22 @@
+\BOOKMARK [0][-]{chapter.1}{مقدمه}{}% 1
+\BOOKMARK [0][-]{chapter.2}{ پیاده‌سازی سخت‌افزاری Verilog }{}% 2
+\BOOKMARK [1][-]{section.2.1}{ مقدمه }{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{ پیاده‌سازی }{chapter.2}% 4
+\BOOKMARK [0][-]{chapter.3}{مدل طلایی}{}% 5
+\BOOKMARK [1][-]{section.3.1}{مقدمه}{chapter.3}% 6
+\BOOKMARK [1][-]{section.3.2}{پیاده‌سازی الگوریتم}{chapter.3}% 7
+\BOOKMARK [0][-]{chapter.4}{توابع و ساختارها}{}% 8
+\BOOKMARK [1][-]{section.4.1}{ ساختارها}{chapter.4}% 9
+\BOOKMARK [2][-]{subsection.4.1.1}{sph-skein-big-context}{section.4.1}% 10
+\BOOKMARK [2][-]{subsection.4.1.2}{IV512}{section.4.1}% 11
+\BOOKMARK [2][-]{subsection.4.1.3}{UBI-BIG}{section.4.1}% 12
+\BOOKMARK [2][-]{subsection.4.1.4}{TFBIG-4eو TFBIG-4o}{section.4.1}% 13
+\BOOKMARK [2][-]{subsection.4.1.5}{TFBIG-ADDKEY}{section.4.1}% 14
+\BOOKMARK [2][-]{subsection.4.1.6}{SKBT و SKBI}{section.4.1}% 15
+\BOOKMARK [2][-]{subsection.4.1.7}{TFBIG-MIX8}{section.4.1}% 16
+\BOOKMARK [2][-]{subsection.4.1.8}{TFBIG-MIX}{section.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.1.9}{TFBIG-INIT}{section.4.1}% 18
+\BOOKMARK [1][-]{section.4.2}{ توابع}{chapter.4}% 19
+\BOOKMARK [2][-]{subsection.4.2.1}{sph-skein512-init}{section.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.2.2}{skein-big-init}{section.4.2}% 21
+\BOOKMARK [2][-]{subsection.4.2.3}{sph-skein512}{section.4.2}% 22
