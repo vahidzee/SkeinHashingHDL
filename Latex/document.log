@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  5 JUL 2019 18:10
+=======
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.11.23)  5 JUL 2019 18:02
+>>>>>>> 365b5adae7464a981f53117b17bf30d0c9c0096d
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1397,12 +1401,35 @@ File: images/table_mix.png Graphic file (type bmp)
 <images/table_mix.png>
 File: images/Mix2.png Graphic file (type bmp)
 <images/Mix2.png>
+<<<<<<< HEAD
 [7
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 58.
  [8]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 58.
+=======
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 ک
+       ه مقادیر $ R $ در جدول زیر آمده است :
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+File: images/MIX1.png Graphic file (type bmp)
+<images/MIX1.png>
+[7])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
+ [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
+>>>>>>> 365b5adae7464a981f53117b17bf30d0c9c0096d
  (./document.aux (./files/TitlePage.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 58.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 58.
@@ -1415,6 +1442,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 58.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  23256 strings out of 492970
  438628 string characters out of 6133938
  589083 words of memory out of 5000000
@@ -1422,5 +1450,14 @@ Here is how much of TeX's memory you used:
  535557 words of font info for 76 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  46i,5n,67p,10429b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
+=======
+ 23173 strings out of 494979
+ 437454 string characters out of 6178337
+ 577743 words of memory out of 5000000
+ 26681 multiletter control sequences out of 15000+600000
+ 535653 words of font info for 88 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 46i,9n,68p,10429b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
+>>>>>>> 365b5adae7464a981f53117b17bf30d0c9c0096d
 
 Output written on document.pdf (9 pages).
