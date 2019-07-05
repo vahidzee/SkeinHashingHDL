@@ -56,7 +56,7 @@ module skein512(
     assign nonce2_le = {nonce2[7:0], nonce2[15:8], nonce2[23:16], nonce2[31:24]};
 
     assign hash = {
-		h_q[455:448],
+        h_q[455:448],
         h_q[463:456],
         h_q[471:464],
         h_q[479:472],
@@ -122,7 +122,7 @@ module skein512(
         h_q[63:56]
         };
 
-	//
+    //
     skein_round sr00(clk, 0, p00_q, h00_q, t0_q, t1_q, o00, ho00);
     skein_round sr01(clk, 1, p01, h01, t1_q, t2_q, o01, ho01);
     skein_round sr02(clk, 2, p02, h02, t2_q, t0_q, o02, ho02);
@@ -149,12 +149,12 @@ module skein512(
         if (phase_q) begin
             p00_d <= {data[63:0], nonce_le, data[95:64], 384'd0};
 
-			// Key Generation
+            // Key Generation
             h00_d[575:64] <= midstate;
             h00_d[63:0] <= 64'd0;
 
 
-			// Tweak
+            // Tweak
             t0_d <= 64'h0000000000000050;
             t1_d <= 64'hb000000000000000;
             t2_d <= 64'hb000000000000050;
@@ -191,15 +191,15 @@ module skein512(
             t2_d <= 64'hFF00000000000008;
 
 
-			// Setting output adding round 18 subkeys
-			// calculate subkeys from ho output subkeys from round 17
+            // Setting output adding round 18 subkeys
+            // calculate subkeys from ho output subkeys from round 17
             h_d[511:448] <= (o0H[511:448]+ho0H[575:512]);
             h_d[447:384] <= (o0H[447:384]+ho0H[511:448]);
             h_d[383:320] <= (o0H[383:320]+ho0H[447:384]);
             h_d[319:256] <= (o0H[319:256]+ho0H[383:320]);
             h_d[255:192] <= (o0H[255:192]+ho0H[319:256]);
-            h_d[191:128] <= (o0H[191:128]+ho0H[255:192]+64'h0000000000000008);	// doubt: tweak value?
-            h_d[127:64] <= (o0H[127:64]+ho0H[191:128]+64'hFF00000000000000);	// doubt: tweak value?
+            h_d[191:128] <= (o0H[191:128]+ho0H[255:192]+64'h0000000000000008);    // doubt: tweak value?
+            h_d[127:64] <= (o0H[127:64]+ho0H[191:128]+64'hFF00000000000000);    // doubt: tweak value?
             h_d[63:0] <= (o0H[63:0]+ho0H[127:64]+18);
         end
 
@@ -214,18 +214,18 @@ module skein512(
 
         phase_q <= phase_d;
 
-		// setting tweak values
+        // setting tweak values
         t0_q <= t0_d;
         t1_q <= t1_d;
         t2_q <= t2_d;
 
         h_q <= h_d;
 
-		// giving a round output to its next round as an input
-        p0H <= o0G;		
+        // giving a round output to its next round as an input
+        p0H <= o0G;
         h0H <= ho0G;
 
-        p0G <= o0F;	
+        p0G <= o0F;
         h0G <= ho0F;
 
         p0F <= o0E;
@@ -304,8 +304,8 @@ module skein_round(
     input [31:0] round,
     input [511:0] p,
     input [575:0] h,
-    input [63:0] t0,  
-    input [63:0] t1, 
+    input [63:0] t0,
+    input [63:0] t1,
     output [511:0] po,
     output [575:0] ho
 );
@@ -339,10 +339,10 @@ module skein_round(
         hx3 <= hx2;
         hx2 <= hx1;
         hx1 <= hx0;
-		
+
         hx0[575:128] <= h[511:64];
         hx0[127:64] <= ((h[575:512] ^ h[511:448]) ^ (h[447:384] ^ h[383:320])) ^ ((h[319:256] ^ h[255:192]) ^ (h[191:128] ^ h[127:64])) ^ 64'h1BD11BDAA9FC1A22;
-		hx0[63:0] <= h[575:512];
+        hx0[63:0] <= h[575:512];
     end
 endmodule
 
