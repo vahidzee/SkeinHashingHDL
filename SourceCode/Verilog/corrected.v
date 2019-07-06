@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2017 Sprocket
  *
@@ -30,8 +31,6 @@ module skein512(
 
     reg [575:0] h00_d, h00_q, h10_d, h10_q;
     reg [575:0] h00, h01, h02, h03, h04, h05, h06, h07, h08, h09, h0A, h0B, h0C, h0D, h0E, h0F, h0G, h0H;
-//	reg [511:0] h00_d, h00_q, h10_d, h10_q;
-//	reg [511:0] h00,h01,h02,h03,h04,h05,h06,h07,h08,h09,h0A,h0B,h0C,h0D,h0E,h0F,h0G,h0H;
 
     reg [511:0] p00_d, p00_q;
     reg [511:0] p00, p01, p02, p03, p04, p05, p06, p07, p08, p09, p0A, p0B, p0C, p0D, p0E, p0F, p0G, p0H;
@@ -39,10 +38,9 @@ module skein512(
     wire [511:0] o00, o01, o02, o03, o04, o05, o06, o07, o08, o09, o0A, o0B, o0C, o0D, o0E, o0F, o0G, o0H;
 
     wire [575:0] ho00, ho01, ho02, ho03, ho04, ho05, ho06, ho07, ho08, ho09, ho0A, ho0B, ho0C, ho0D, ho0E, ho0F, ho0G, ho0H;
-//	wire [511:0] ho00,ho01,ho02,ho03,ho04,ho05,ho06,ho07,ho08,ho09,ho0A,ho0B,ho0C,ho0D,ho0E,ho0F,ho0G,ho0H;
 
     reg [575:0] hH;
-//	reg [511:0] hH;
+    
     reg [511:0] oH;
 
     reg [511:0] h_d, h_q;
@@ -122,7 +120,6 @@ module skein512(
         h_q[63:56]
         };
 
-    //
     skein_round sr00(clk, 0, p00_q, h00_q, t0_q, t1_q, o00, ho00);
     skein_round sr01(clk, 1, p01, h01, t1_q, t2_q, o01, ho01);
     skein_round sr02(clk, 2, p02, h02, t2_q, t0_q, o02, ho02);
@@ -166,16 +163,6 @@ module skein512(
 
             p00_d <= 512'd0;
 
-//			h00_d[511:448] <= data[63:0] ^ ( oH[511:448] + hH[511:448] );
-//			h00_d[447:384] <= { nonce2_le, data[95:64] } ^ ( oH[447:384] + hH[447:384] );
-//			h00_d[383:320] <= oH[383:320] + hH[383:320];
-//			h00_d[319:256] <= oH[319:256] + hH[319:256];
-//			h00_d[255:192] <= oH[255:192] + hH[255:192];
-//			h00_d[191:128] <= oH[191:128] + hH[191:128] + 64'h0000000000000050;
-//			h00_d[127: 64] <= oH[127: 64] + hH[127: 64] + 64'hb000000000000000;
-//			h00_d[ 63:  0] <= oH[ 63:  0] + hH[ 63:  0] + 18;
-//			h00_d[63:0] <= ((h00_d[575:512] ^ h00_d[511:448]) ^ (h00_d[447:384] ^ h00_d[383:320])) ^ ((h00_d[319:256] ^ h00_d[255:192]) ^ (h00_d[191:128] ^ h00_d[127: 64])) ^ 64'h1BD11BDAA9FC1A22;
-
             h00_d[575:512] <= data[63:0] ^ (oH[511:448]+hH[575:512]);
             h00_d[511:448] <= {nonce2_le, data[95:64]} ^ (oH[447:384]+hH[511:448]);
             h00_d[447:384] <= oH[383:320]+hH[447:384];
@@ -184,7 +171,6 @@ module skein512(
             h00_d[255:192] <= oH[191:128]+hH[255:192]+64'h0000000000000050;
             h00_d[191:128] <= oH[127:64]+hH[191:128]+64'hb000000000000000;
             h00_d[127:64] <= oH[63:0]+hH[127:64]+18;
-//			h00_d[63:0] <= ((h00_d[575:512] ^ h00_d[511:448]) ^ (h00_d[447:384] ^ h00_d[383:320])) ^ ((h00_d[319:256] ^ h00_d[255:192]) ^ (h00_d[191:128] ^ h00_d[127: 64])) ^ 64'h1BD11BDAA9FC1A22;
 
             t0_d <= 64'h0000000000000008;
             t1_d <= 64'hFF00000000000000;
@@ -206,10 +192,8 @@ module skein512(
     end
 
     always @(posedge clk) begin
-
-//		hH <= { ho0H[63:0], ho0H[575:64] };
         hH <= ho0H;
-//		hH <= { ho0H[63:0], ho0H[511:64] };
+
         oH <= o0H;
 
         phase_q <= phase_d;
@@ -277,24 +261,6 @@ module skein512(
         h00_q <= h00_d;
 
         nonce2 <= nonce-32'd54;
-//		nonce2 <= nonce;
-
-//		$display("n2:   %x", nonce2_le);
-//		$display("t0:   %x", t0_d);
-//		$display("p00:  %x", p00_d);
-//		$display("h00:  %x", h00_d);
-//		$display("p01:  %x", p01);
-//		$display("h01:  %x", h01);
-//		$display("o0G:  %x", o0G);
-//		$display("ho0G:  %x", ho0G);
-//		$display("o0H:  %x", o0H);
-//		$display("ho0H:  %x", ho0H);
-//
-//		$display("oH:  %x", oH);
-//		$display("hH: %x", hH);
-//		$display("hx: %x", hx);
-//		$display("Hash: %x", hash);
-
     end
 
 endmodule
