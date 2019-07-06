@@ -1,8 +1,0 @@
-sph_skein512_init(void *cc) : 
-	This function uses the skein_big_init function that is decribed in skein_big_init.txt.
-
-
-// TODO : a brief describtion about this function, details are on other files.
-
-
-

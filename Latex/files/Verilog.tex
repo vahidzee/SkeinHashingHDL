@@ -90,7 +90,7 @@ $$todo: <Valid Code>$$
 \vspace{-0.2cm}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=3.5cm]{images/VerilogDocumentation/skein_functionality.pdf}	
+	\includegraphics[width=3.5cm]{Images/VerilogDocumentation/skein_functionality.pdf}	
 	\caption{ساختار کلی پیاده‌سازی سخت‌افزاری}
 \end{figure}
 دو بخش پردازش ورودی و خروجی‌ها به صورت کامل در ماژول 
@@ -115,7 +115,7 @@ $$todo: <Valid Code>$$
 شمای کلی حرکت داده داخل بلاک های رمزنگاری در این الگوریتم به شکل زیر می باشد:
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7cm]{images/VerilogDocumentation/cipherblock_dataflow.png}	
+	\includegraphics[width=7cm]{Images/VerilogDocumentation/cipherblock_dataflow.png}	
 	\caption{شمایی از حرکت داده در بلاک های رمزنگاری}
 \end{figure}
 داده‌ی ورودی که به ۸ بخشِ ۶۴ بیتی تقسیم می‌شود، به بلاک‌های رمزنگاری تزریق شده و پس از ۴ مرحله ی متوالی از درهم‌سازی 
@@ -293,7 +293,7 @@ $$todo: <Valid Code>$$
 و تشکیل واحد های محاسباتی \lr{round} های الگوریتم می‌باشد که بلاک دیاگرام های تهیه شده در تصاویر دو صفحه‌ی بعدی به تفصیل این مسئله و هم‌چنین شمای کلی حرکت داده داخل این ماژول‌ها را توضیح می دهند:
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10.5cm]{images/VerilogDocumentation/diagrams_round1.pdf}	
+	\includegraphics[width=10.5cm]{Images/VerilogDocumentation/diagrams_round1.pdf}	
 	\caption{
 	بلاک دیاگرام شماتیک و نحوه‌ی جریان داده در ماژول 
 	\lr{skein\_round\_1}
@@ -301,7 +301,7 @@ $$todo: <Valid Code>$$
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10.5cm]{images/VerilogDocumentation/diagrams_round2.pdf}	
+	\includegraphics[width=10.5cm]{Images/VerilogDocumentation/diagrams_round2.pdf}	
 	\caption{
 		بلاک دیاگرام شماتیک و نحوه‌ی جریان داده در ماژول 
 		\lr{skein\_round\_2}
@@ -309,7 +309,7 @@ $$todo: <Valid Code>$$
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10.5cm]{images/VerilogDocumentation/diagrams_round3.pdf}	
+	\includegraphics[width=10.5cm]{Images/VerilogDocumentation/diagrams_round3.pdf}	
 	\caption{
 		بلاک دیاگرام شماتیک و نحوه‌ی جریان داده در ماژول 
 		\lr{skein\_round\_3}
@@ -317,7 +317,7 @@ $$todo: <Valid Code>$$
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10.5cm]{images/VerilogDocumentation/diagrams_round4.pdf}	
+	\includegraphics[width=10.5cm]{Images/VerilogDocumentation/diagrams_round4.pdf}	
 	\caption{
 		بلاک دیاگرام شماتیک و نحوه‌ی جریان داده در ماژول 
 		\lr{skein\_round\_4}
@@ -365,7 +365,7 @@ $t_0$ , $t_1$ , $t_2$
  می‌باشد:
  \begin{figure}[H]
  	\centering
- 	\includegraphics[width=10cm]{images/VerilogDocumentation/skeinround_dataflow.pdf}	
+ 	\includegraphics[width=10cm]{Images/VerilogDocumentation/skeinround_dataflow.pdf}	
  	\caption{شمایی از نحوه‌ی حرکت داده و ساختار هر نمونه از ماژول
  	\lr{skein\_round}
  }
@@ -409,4 +409,43 @@ $$t1 = t_{ (round + 1 ) \ mod \ 3}$$
 \lr{skein\_round\_1}
 ) می‌باشد.
 
+بخش دیگری که در این ماژول پیاده‌سازی شده است، محاسبه‌ی 
+\lr{Subkey}
+های مربوط به
+ \lr{round}
+ بعدی براساس 
+ \lr{Subkey}
+ های این 
+  \lr{round}
+  می‌باشد.
+  اگر به فورمول های محاسبه‌ی
+  \lr{Subkey}
+  ها توجه کنید، واضح است که پس از هر 
+   \lr{round}
+   انگار  \lr{Subkey}
+   ها یک گردش به چپ دارند. دقیقا همین ایده در این ماژول به کمک توصیفی رفتاری در بخش دوم کد های 
+   \lr{always block}
+   حساس به لبه‌ی بالارونده‌ی ساعت، پیاده شده‌است. این توصیف در واقع معرف یک مدار ترکیبی برای محاسبه ی حاصل 
+   \lr{xor}
+   $Subkey_{round,\ 0}$
+   تا
+$Subkey_{round,\ 7}$
+و یک مدار ترتیبی برای انتقال مقادیر یک بلاک چرخش به چپ و حاصل 
+\lr{xor}
+\lr{Subkey}
+ها به خروجی می باشد.
 
+پیاده‌سازی و مقدار‌دهی تناوبی مقادیر تنظیم (
+\lr{tweak}
+)
+به هنگام نمونه‌گیری ماژول‌های 
+\lr{skein\_round}
+در ماژول اصلی یعنی
+\lr{skein512}
+انجام شده است.
+
+\subsubsection{
+	اتصال 
+	\lr{round}
+	ها به یکدیگر و پیاده‌سازی بلاک های رمزگذاری به صورت زنجیره‌ای
+}

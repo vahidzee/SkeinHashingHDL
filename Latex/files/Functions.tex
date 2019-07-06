@@ -16,7 +16,7 @@
 در ابتدا سه\lr{ sph-u64 }با اسامی $ t_0 , t_1 , t_2 $ تعریف شده‌اند. \lr{ sph-u64 }جنسی تعریف شده برای متغیرهای ۶۴ بیتی بدون علامت است. سپس متغیری به اسم $ u $ تعریف شده‌ که در ادامه‌ی تابع به عنوان شمارنده در حلقه‌ها استفاده شده‌است. با شروع از \lr{buf} هر هشت عنصر که هر کدام یک بایت هستند توسط \lr{sph-dec64le-aligned} به ۶۴ بیت پشت سر هم تبدیل شده و سپس به$ m_0 $تا $ m_7 $ داده شده‌اند.  \lr{sph-dec64le-aligned} یک بیت به عنوان شروع هشت بایت ورودی گرفته سپس هشت بایت را به یک دیکودر داده و ۶۴ بیت خروجی می‌دهد. مقدارهای $ m_0 $ تا $ m_7 $ در $ p_0 $ تا $ p_7 $ ریخته شده‌اند. $ m_0 $ تا $ m_7 $ تا اخر تابع بدون تغییر باقی مانده و مقدارهای اولیه‌ی بخش‌های دیتا هستند.  
 سپس مقدار ‌\lr{extra} پس از \lr{cast} به\lr{sph-u64} با مقدار \lr{bcount} با ۶ بیت شیفت به چپ جمع شده و به $ t_0 $ داده شده‌است. سپس مقدار ‌\lr{bcount} ، ۵۸ بیت به راست شیفت داده شده و ‌\lr{etype} هم ۵۵ بیت به چپ شیف داده شده‌است. این مقادیر با هم جمع شده‌‌اند و جمعشان به ‌$ t_1 $ داده شده‌است. مقدار شیفت داده شدن‌ها از روی شکل زیر قابل توجیه‌اند:
 \begin{center}
-	\includegraphics[width=14cm]{images/tweak.png}
+	\includegraphics[width=14cm]{Images/GoldenModelDocumentation/tweak.png}
 \end{center}
 
 در این جدول \lr{TreeLevel} همان \lr{bcount} است که در تابع\hyperref[subsec:skein-big-core]{\lr{skein-big-core}} در هربار صدا کردن \lr{UBI-BIG} مقدار آن یک واحد افزوده می‌شود. \lr{etype} برای رد کردن بخش \lr{position} و هم‌چنین مشخص کردن بیت \lr{first}  است و \lr{extra} برای تعیین بیت \lr{final} و \lr{bitpad} استفاده شده‌است. پنج بیت خالی هم برای \lr{Type}قرار داده شده و هم‌چنین بخش \lr{reserved} هم صفر هست. 
@@ -40,8 +40,8 @@
 \lr{N\_w} تعداد 
 \lr{cypher block}هاست که در این کد ۸ است. همین‌طور \lr{j} همان شماره‌‌ی راند در ماژول‌های وریلاگ است.
 \begin{center}
-	\includegraphics[width=10cm]{images/table_mix.png}
-	\includegraphics[width= 10cm]{images/Mix2.png}
+	\includegraphics[width=10cm]{Images/GoldenModelDocumentation/table_mix.png}
+	\includegraphics[width= 10cm]{Images/GoldenModelDocumentation/Mix2.png}
 \end{center}
 
 
@@ -100,7 +100,7 @@
 که مقادیر $ R $ در جدول زیر آمده است :
 
 \begin{center}
-	\includegraphics[width=10cm]{images/MIX1.png}
+	\includegraphics[width=10cm]{Images/GoldenModelDocumentation/MIX1.png}
 \end{center}
 
 
@@ -170,7 +170,7 @@ $$
 صدا و بعد مقدار فعلی پوینتر هم در \lr{struct} ذخیره شده‌است. 
 نحوه ذخیره‌سازی \lr{tweak} به شکل زیر است. 
 \begin{center}
-	\includegraphics[width=14cm]{images/tweak.png}
+	\includegraphics[width=14cm]{Images/GoldenModelDocumentation/tweak.png}
 \end{center}
 
 دلیل جمع کردن \lr{first} با ۹۶،‌ رد کردن بخش \lr{position} است. حالت اولیه \lr{first} هم به این علت با چک کردن \lr{bcount} مقداردهی شده که مقدار بخش \lr{first} باید برای سری اول گرفتن بلوک دیتا برابر با ۱ باشد. 
