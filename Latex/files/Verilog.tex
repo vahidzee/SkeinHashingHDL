@@ -624,3 +624,71 @@ $t_0,\ t_1,\ t_2$
 		پاسخ تولید شده برای ورودی‌های داده شده پس از ۱۰۰۰۰ نانو ثانیه، پس از گذشت ۲۱۸ پالس ساعت
 	}
 \end{figure}
+
+\pagebreak
+
+\section{سنتز}
+عمل سنتز به فرایند تبدیل طراحی سخت‌افزاری انجام شده با زبان‌های توصیف سخت‌افزار به لیستی از گیت‌های منطقی و ماژول هایی واقعی‌ای از رم‌ و رام ها و غیره برای تولید مدارات و قطعات \lr{ASIC}  و یا قرارگیری روی سخت‌افزار‌های از پیش‌آماده و قابل برنامه‌ریزی چون \lr{FPGA}‌ها گفته‌می‌شود. این‌کار توسط ابزاری نرم‌افزاری به نام 
+\lr{Synthesis tool}
+انجام پذیر‌است.
+
+برای سنتز این پروژه برای محیط مقصد
+\lr{xilinx}
+، از
+\lr{ ISE Design suite}
+استفاده شد. درپیاده‌سازی تصحیح شده از الگوریتم، ماژول اصلی دارای 1153 
+\lr{port}
+ ورودی و خروجی می‌باشد، با توجه به این‌که هر قطعه‌ی \lr{FPGA} ای توان پشتیبانی از این تعداد
+ \lr{I/O port}
+ را ندارد،برای سنتز، پس از بررسی چند قطعه و با توجه به محدودیت های 
+ \lr{licensing}
+برخی از 
+\lr{FPGA}
+هایی که توان پیاده‌سازی این طراحی را داشتند، نهایتا از قطعه‌ی \lr{XC6VLX760} از خانواده‌ی \lr{Virtex6}
+برای سنتز استفاده شد.
+
+مراحل سنتز این پیاده‌سازی دچار هیچ پیغام خطایی نشد که لزومی به ارائه‌ی راه‌کار برای رفع آن باشد و تمامی فایل های خروجی غیر حجیم این سنتز از
+\href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SynthesisFiles/}{
+	 این آدرس
+} 
+قابل دسترسی می‌باشند.
+
+
+\href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SynthesisFiles/report_summery.html}{
+	این فایل
+} 
+شامل گزارشی کلی درباره ی این سنتز، اعم از درصد استفاده از سخت‌افزار‌های مختلف موجود در 
+\lr{FPGA}
+و غیره می باشد.
+
+\href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SynthesisFiles/report_pinout.html}{
+	این فایل
+} 
+شامل گزارشی از پورت‌های استفاده شده در 
+\lr{FPGA}
+برای اتصال ورودی و خروجی های قطعه‌ی طراحی شده است.
+
+\href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SynthesisFiles/report_envsettings.html}{
+	این فایل
+} 
+شامل گزارشی از تنظیمات محیط انجام سنتز در ابزار سنتز است.
+
+\href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SynthesisFiles/report_pad.html}{
+	این فایل
+} 
+شامل گزارشی از مراحل 
+\lr{placement}
+و
+\lr{format}
+می باشد.
+
+
+\href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SynthesisFiles/report_pad.html}{
+	این فایل
+} 
+\lr{Net List}
+تولید شده در سنتز بوده و آماده‌ی انتقال به 
+\lr{FPGA}
+مربوط به سنتز می‌باشد.
+
+
