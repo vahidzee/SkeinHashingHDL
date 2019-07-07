@@ -89,16 +89,17 @@ $$todo: <Valid Code>$$
 \href{https://github.com/VahidZee/SkeinHashingHDL/blob/master/SourceCode/Verilog/corrected.v}{این فایل} 
 )
 نیز در کنار مقاله پیوست شده است، تمامی مستند سازی های این مقاله، براساس پیاده سازی تصحیح شده ی کدهای اولیه می‌باشد.
+\pagebreak
 \subsection{
 	ساختار طراحی
 }
-ساختار کلی طراحی شده برای این الگوریتم به سه بخش که در تصویر زیر قابل مشاهده اند قابل تفکیک است، ماژول اصلی طراحی که 
+ساختار کلی این الگوریتم شامل سه بخش کلی بوده که از وظایف ماژول اصلی این طراحی که 
 \lr{skein512}
-نام گذاری شده است، این سه وظیفه را بر‌عهده دارد.
-\vspace{-0.2cm}
+نام گذاری شده است نیز می‌باشند این وظایف و بخش ها به صورت کلی در تصویر زیر قابل مشاهده اند:
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=3.5cm]{Images/VerilogDocumentation/skein_functionality.pdf}	
+	\includegraphics[width=8cm]{Images/VerilogDocumentation/skein_functionality.pdf}	
 	\caption{ساختار کلی پیاده‌سازی سخت‌افزاری}
 \end{figure}
 دو بخش پردازش ورودی و خروجی‌ها به صورت کامل در ماژول 
@@ -112,7 +113,7 @@ $$todo: <Valid Code>$$
 تشکیل شده و قرارگیری زنجیره‌ای آنها و محاسبه ی اولیه‌ی مقادیر کلید‌های رمزنگاری در ماژول 
 \lr{skein512}
 صورت گرفته است.
-
+\pagebreak
 \subsection{
 	پیاده سازی بلاک‌های رمزگذاری
 }
