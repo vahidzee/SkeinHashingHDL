@@ -8,6 +8,8 @@ Source codes can be found in `/SourceCode` , `/SourceCode/C/` contains the given
 
 `/RunData/` holds the result of the corrected verilog simulations.
  
+ `/SynthesisFiles/` holds synthesis outputs of the corrected verilog implementation.
+ 
 ## Team Members
 A Collaboration With:
   * Elahe Khodaii [@elahekhodaie](github.com/elahekhodaie)
